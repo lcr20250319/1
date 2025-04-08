@@ -1,6 +1,7 @@
 from langchain.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
 from langchain.chains import ConversationChain
+import os
 
 def generate_script(subject,video_length,creativity,keyword):
     title_template = ChatPromptTemplate.from_messages(
@@ -16,7 +17,7 @@ def generate_script(subject,video_length,creativity,keyword):
     ])
 
     model = ChatOpenAI(model="9dc913a037774fc0b248376905c85da5",
-                       api_key="1e4ce7db819c4891a6365f59308b46f8",
+
                        temperature=creativity,
                        base_url = "https://wishub-x1.ctyun.cn/v1")
 
@@ -31,7 +32,7 @@ def generate_script(subject,video_length,creativity,keyword):
 
 def get_chat_response(prompt,memory):
     model = ChatOpenAI(model="9dc913a037774fc0b248376905c85da5",
-                       api_key="1e4ce7db819c4891a6365f59308b46f8",
+                       
                        base_url = "https://wishub-x1.ctyun.cn/v1")
     chain = ConversationChain(llm= model,
                               memory = memory
